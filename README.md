@@ -1,4 +1,4 @@
-# 22 Final Project: Dungeons and Dragon Character Generator
+# 22 Final Project: Dungeons and Dragons Character Generator
 
 ## Our Task 
 
