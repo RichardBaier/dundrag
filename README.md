@@ -11,7 +11,7 @@ MongoDB - for a flexible scalable database
 GraphQL - to query and fetch data from our database 
 React - on the front end 
 
-* also include any NPM packages here as well* 
+*also include any NPM packages here as well* 
 
 For bonus points, we can make this application a Progressive Web App (PWA) as well. 
 
