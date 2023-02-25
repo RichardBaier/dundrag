@@ -142,6 +142,7 @@ while maintaining an accurate vision of the final product.
 
 
 ## Grading Requirements 
+[Grading Requirements](https://github.com/RichardBaier/dundrag/blob/main/grading_reqs.png)
 
 
 
