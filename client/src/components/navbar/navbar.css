@@ -1,0 +1,45 @@
+nav {
+  width: 100vw;
+  height: 5rem;
+  display: grid;
+  place-items: left;
+  position: fixed;
+  top: 0;
+  left: 5px;
+  z-index: 9;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navPic {
+  width: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+nav ul {
+  margin:0;
+  padding:0;
+  list-style:none; 
+}
+
+nav ul li {
+  margin:0 0 0 25px;
+  padding:0;
+  display:inline;
+}
+
+nav ul li a { 
+  color:#fff;
+  text-decoration:none;
+  font-size:1.3rem;
+}
+
+nav ul li a:hover { 
+  color:rgb(248, 9, 9);
+  text-decoration:underline;
+}
