@@ -1,4 +1,4 @@
-# 22 Final Project: Dungeons and Dragons Character Generator
+# 22 Final Project: Dungeons and Dragon Character Generator
 
 ## Our Task 
 
@@ -11,9 +11,7 @@ MongoDB - for a flexible scalable database
 GraphQL - to query and fetch data from our database 
 React - on the front end 
 
-*also include any NPM packages here as well* 
-
-For bonus points, we can make this application a Progressive Web App (PWA) as well. 
+**include any NPM packages here as well* 
 
 We'll be deploying this program to Application to Heroku.
 
@@ -95,27 +93,77 @@ THEN I can either choose an item that exists in dnd, or create my own
 Establish our API routes/endpoints and Models in this section to ensure a shared understanding among team members 
 while maintaining an accurate vision of the final product. 
 
+## Models
+
+### User
+
+-  `username`
+    - String
+    - Unique
+    - Required
+    - Trimmed
+
+-  `email`
+    - String
+    - Required
+    - Unique
+    - Must match a valid email address
+
+-  `password`
+    - String
+    - Required
+    - Trimmed
+  
+-  `id`
+    - Integer
+    - Unique
+    - Required
+
+### Character
+
+-  `name`
+    - String
+    - Required
+    - Trimmed
+-  `race`
+    - String
+    - Required
+    - Trimmed
+-  `Origin Story/Background`
+    - String
+    - Required
+    - Trimmed
+-  `Skills`
+    -  Array
+-  `Spells`
+    - Array
+-  `items`
+    - Array
+
+## Routes
+
+Here are the possible routes for Dundrag.com:
+
+### Auth Routes
+
+- `POST /api/signup` - Creates a new user account
+- `POST /api/login` - Logs in an existing user
+
+### Profile Routes (Locked with withAuth) 
+
+- `GET /profile` - Gets the profile page for the logged-in user
+- `POST /characters` - Creates a new character for the logged-in user
+- `GET /characters` - Gets all characters for the logged-in user
+- `GET /:characterId/bio` - Gets the bio information for a specific character
+- `GET /:characterId/skills` - Gets the skills for a specific character
+- `GET /:characterId/spells` - Gets the spells for a specific character
+- `GET /:characterId/items` - Gets the items for a specific character
+
+### Logout Route
+
+- `GET /api/logout` - Logs out the current user
 
 
-### Models
-
-**User**:
-
-* `username`
-  * String
-  * Unique
-  * Required
-  * Trimmed
-
-* `email`
-  * String
-  * Required
-  * Unique
-  * Must match a valid email address (look into Mongoose's matching validation)
-
-### API Routes
-
-**`/api/users`**
 
 * `GET` all users
 
@@ -144,8 +192,7 @@ while maintaining an accurate vision of the final product.
 
 
 ## Grading Requirements 
-![Grading Requirements](https://github.com/RichardBaier/dundrag/blob/main/grading_reqs.png)
-
+![Grading Requirements](client/src/assets/gradingRequirements.png)
 
 
 
