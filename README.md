@@ -192,7 +192,7 @@ Here are the possible routes for Dundrag.com:
 
 
 ## Grading Requirements 
-![Grading Requirements](./client/src/assets/images/baseProfilePic.png)
+![Grading Requirements](./assets/images/baseProfilePic.png)
 
 
 
