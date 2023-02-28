@@ -98,47 +98,47 @@ while maintaining an accurate vision of the final product.
 ### User
 
 -  `username`
-  - String
-  - Unique
-  - Required
-  - Trimmed
+    - String
+    - Unique
+    - Required
+    - Trimmed
 
 -  `email`
-  - String
-  - Required
-  - Unique
-  - Must match a valid email address
+    - String
+    - Required
+    - Unique
+    - Must match a valid email address
 
 -  `password`
-  - String
-  - Required
-  - Trimmed
+    - String
+    - Required
+    - Trimmed
   
 -  `id`
-  - Integer
-  - Unique
-  - Required
+    - Integer
+    - Unique
+    - Required
 
 ### Character
 
 -  `name`
-  - String
-  - Required
-  - Trimmed
+    - String
+    - Required
+    - Trimmed
 -  `race`
-  - String
-  - Required
-  - Trimmed
+    - String
+    - Required
+    - Trimmed
 -  `Origin Story/Background`
-  - String
-  - Required
-  - Trimmed
+    - String
+    - Required
+    - Trimmed
 -  `Skills`
-  -  Array
+    -  Array
 -  `Spells`
-  - Array
+    - Array
 -  `items`
-  - Array
+    - Array
 
 ## Routes
 
