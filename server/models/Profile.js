@@ -19,9 +19,11 @@ const profileSchema = new Schema({
       password: {
         type: String,
         required: true,
-        minlength: 14,
+        minlength: 5,
       },
-      character: [Character],
+      // character: {
+      //   type: Schema.Types.ObjectId, ref: 'Character'
+      // }
 });
 
 profileSchema.pre('save', async function (next) {
