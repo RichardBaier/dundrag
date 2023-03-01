@@ -198,3 +198,15 @@ Here are the possible routes for Dundrag.com:
 
 
 \- Research tooltips, DnD 5e api, graphQL/Mongoose integration, look at other dnd apps and see how they work.
+\ - placeholder env file ENV.example
+
+<!-- Steps In Order: (w/ help of Jaytee) -->
+<!-- create server 
+server.js
+create database 
+create data model structure
+
+then move to graphQL (which is building API) -->
+<!-- there is graphQL Boilerplate 
+create typeDefs
+Create seed file for example data  -->
