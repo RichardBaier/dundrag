@@ -1,16 +1,14 @@
 const { Schema, model } = require("mongoose");
 
 const spellSchema = new Schema({
-  skill_name: {
-    type: string,
+  spell_name: {
+    type: String,
     required: true,
   },
-  skill_description: {
-    type: string,
+  spell_description: {
+    type: String,
     required: true,
   },
 });
 
-const Spell = model("Spell", spellSchema);
-
-module.exports = Spell;
+module.exports = spellSchema;
