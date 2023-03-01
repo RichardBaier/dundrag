@@ -1,8 +1,7 @@
-const Bio = require('./Bio');
 const Profile = require('./Profile');
 const Character = require('./Character');
-const Skills = require('./Skills');
-const Spells = require('./Spells');
+const Skill = require('./Skill');
+const Spell = require('./Spell');
 
 
-module.exports = { Bio, Profile, Character, Skills, Spells };
+module.exports = { Profile, Character, Skill, Spell };

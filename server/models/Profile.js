@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Character = require('./Character');
+
 
 const profileSchema = new Schema({
     username: {
@@ -19,6 +21,7 @@ const profileSchema = new Schema({
         required: true,
         minlength: 14,
       },
+      character: [Character],
 });
 
 profileSchema.pre('save', async function (next) {
