@@ -1,42 +1,33 @@
 const db = require('../config/connection');
-const Profile = require('../models/Profile')
-const Character = require('../models/Character')
+const { Profile, Character } = require('../models');
+const profileSeeds = require('./profileSeeds.json');
+const characterSeeds = require('./characterSeeds.json');
+
 
 db.once('open', async () => {
   try {
 
-    const newCharacter = await Character.create({
-      character_name: "Jeffrey",
-      character_class: "Rogue",
-      character_level: 2,
-      character_exp: 69,
-      origin_story: "A beginner rogue. Not very skilled just quite yet tbh!",
-      background: "Asian",
-      item: {
-        item_name: 'knife',
-        item_description: 'a small knife.'
-      },
-      spell: {
-        spell_name: 'curse',
-        spell_description: 'cussing and stuff idk .'
-      },
-      skill: {
-        skill_name: 'stealth',
-        skill_description: 'im usually rly quiet.'
-      }
-    })
-
-    const profile = await Profile.create({
-      username: 'jhoang',
-      email: 'jhoang@gmail.com',
-      password: 'password123!',
-      character: newCharacter._id
-    })
+    await Character.deleteMany({});
+    await Profile.deleteMany({});
     
-    console.log(profile);
-    console.log('all done!');
-    process.exit(0);
+
+    await Profile.create(profileSeeds);
+
+    for (let i = 0; i < characterSeeds.length; i++) {
+      const { _id, creator } = await Character.create(characterSeeds[i]);
+      const profile = await Profile.findOneAndUpdate(
+        { username: creator },
+        {
+          $addToSet: {
+            characters: _id,
+          }
+        }
+      );
+    }
   } catch (err) {
-    throw err;
+    console.error(err.message);
+    process.exit(1);
   }
+  console.log('all done!');
+  process.exit(0);
 });
