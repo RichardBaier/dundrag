@@ -1,10 +1,13 @@
 const { Schema, model } = require("mongoose");
-const Item = require("./Item");
 const Skill = require("./Skill");
 const Spell = require("./Spell");
-// const Profile = require("./Profile")
+const Item = require("./Item");
 
 const characterSchema = new Schema({
+  creator: {
+    type: String,
+    required: true,
+  },
   character_name: {
     type: String,
     required: true,
@@ -29,15 +32,15 @@ const characterSchema = new Schema({
     type: String,
     required: true,
   },
-  item: [Item],
-  skill: [Skill],
-  spell: [Spell],
-
-
-//   creator: [{
-//     username: 'String', by: mongoose.Schema.types.objectID, ref: "Profile"
-//   }]
+  custom_items: {
+    type: Schema.Types.ObjectId,
+    ref: "CustomItem",
+  },
+  items: [Item],
+  skills: [Skill],
+  spells: [Spell],
 });
+
 
 const Character = model("Character", characterSchema);
 
