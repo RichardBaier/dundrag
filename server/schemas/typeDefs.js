@@ -54,6 +54,7 @@ const typeDefs = gql`
     characters: [Character]
     character_by_creator(creator: String!): [Character]
     character(character_id: ID!): Character
+
   }
 `;
 
