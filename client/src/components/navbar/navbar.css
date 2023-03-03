@@ -5,41 +5,55 @@ nav {
   place-items: left;
   position: fixed;
   top: 0;
-  left: 5px;
+  left: 0px;
   z-index: 9;
 }
 
 .navContainer {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  background-color: rgb(86, 1, 1);
 }
 
 .navPic {
   width: 2.5rem;
   border-radius: 50%;
   overflow: hidden;
+  margin-left: 25px;
 }
 
 nav ul {
-  margin:0;
+  margin:0 25px;
+  height: 100%;
+  width: 50%;
   padding:0;
   list-style:none; 
+  display: flex;
 }
 
 nav ul li {
-  margin:0 0 0 25px;
-  padding:0;
-  display:inline;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
 }
 
 nav ul li a { 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color:#fff;
   text-decoration:none;
   font-size:1.3rem;
+  transition: all 0.5s ease-in-out;
 }
 
-nav ul li a:hover { 
-  color:rgb(248, 9, 9);
-  text-decoration:underline;
+nav ul li a:hover {
+  color: black;
 }
+
+nav ul li:hover { 
+  background-color:red;
+  cursor: pointer;
+} 
