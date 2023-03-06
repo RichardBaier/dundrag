@@ -84,6 +84,20 @@ const typeDefs = gql`
     damage: Damage
     weapon_range: WeaponRange!
   }
+  
+    type Gear {
+    index: String!
+    name: String!
+    cost: Cost!
+    desc: [String!]
+  }
+
+
+
+  type Auth {
+    token: ID!
+    profile: Profile
+  }
 
   type Query {
     profiles: [Profile]
@@ -92,14 +106,27 @@ const typeDefs = gql`
     character_by_creator(creator: String!): [Character]
     character(character_id: ID!): Character
   }
-  type Gear {
-    index: String!
-    name: String!
-    cost: Cost!
-    desc: [String!]
+
+  type Mutation {
+    addProfile(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    
   }
 
-
 `;
+
+// input characterInput {
+//   character_name: [String]
+//   character_class: [String]
+//   character_level: [String]
+//   character_exp: [String]
+//   origin_story: [String]
+//   background: [String]
+//   custom_items: [String]
+//   items: [String]
+//   skills: [String]
+//   spells: [String]
+// }
+// addCharacter(input: characterInput!): Profile
 
 module.exports = typeDefs;
