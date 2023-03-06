@@ -48,6 +48,13 @@ const typeDefs = gql`
     spell_description: String!
   }
 
+
+
+  type Auth {
+    token: ID!
+    profile: Profile
+  }
+
   type Query {
     profiles: [Profile]
     profile(username: String!): Profile
@@ -56,6 +63,26 @@ const typeDefs = gql`
     character(character_id: ID!): Character
 
   }
+
+  type Mutation {
+    addProfile(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    
+  }
 `;
+
+// input characterInput {
+//   character_name: [String]
+//   character_class: [String]
+//   character_level: [String]
+//   character_exp: [String]
+//   origin_story: [String]
+//   background: [String]
+//   custom_items: [String]
+//   items: [String]
+//   skills: [String]
+//   spells: [String]
+// }
+// addCharacter(input: characterInput!): Profile
 
 module.exports = typeDefs;

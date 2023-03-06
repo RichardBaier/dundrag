@@ -4,6 +4,21 @@ const path = require("path");
 const { authMiddleware } = require("./utils/auth");
 require("dotenv").config();
 
+// require('isomorphic-fetch');
+// fetch('https://www.dnd5eapi.co/graphql', {
+//   method: 'QUERY',
+//   headers: { 'Content-Type': 'application/json'}, 
+//   body: JSON.stringify({ query: `
+//   query Query {
+//     spells {
+//       desc
+//       name
+//     }
+//   }
+// }
+//   `})
+// })
+
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
