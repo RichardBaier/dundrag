@@ -43,9 +43,15 @@ const typeDefs = gql`
   }
 
   type Spell {
-    _id: ID!
-    spell_name: String!
-    spell_description: String!
+    casting_time: String!
+    classes(name: String): [Class!]!
+    damage: SpellDamage
+    desc: [String!]!
+    duration: String!
+    level: Int!
+    material: String
+    name: String!
+    range: String!
   }
 
   type Query {
@@ -56,6 +62,14 @@ const typeDefs = gql`
     character(character_id: ID!): Character
 
   }
+  type Gear {
+    index: String!
+    name: String!
+    cost: Cost!
+    desc: [String!]
+  }
+
+
 `;
 
 module.exports = typeDefs;
