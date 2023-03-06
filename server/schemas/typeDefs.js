@@ -40,6 +40,8 @@ const typeDefs = gql`
     _id: ID!
     skill_name: String!
     skill_description: String!
+    ability_name: [abilitySchema]
+    ability_modifier: [abilitySchema]
   }
 
   type Spell {
@@ -53,6 +55,35 @@ const typeDefs = gql`
     name: String!
     range: String!
   }
+  type Pack {
+    name: String!
+    desc: [String!]
+    cost: Cost!
+    contents: [PackQuantity!]!
+  }
+
+  type Ammunition {
+    name: String!
+    desc: [String!]
+    quantity: Int!
+    cost: Cost!
+  }
+
+  type Armor {
+    name: String!
+    desc: [String!]
+    cost: Cost!
+    weight: Float
+    armor_class: ArmorClass!
+  }
+
+  type Weapon {
+    name: String!
+    cost: Cost!
+    desc: [String!]
+    damage: Damage
+    weapon_range: WeaponRange!
+  }
 
   type Query {
     profiles: [Profile]
@@ -60,7 +91,6 @@ const typeDefs = gql`
     characters: [Character]
     character_by_creator(creator: String!): [Character]
     character(character_id: ID!): Character
-
   }
   type Gear {
     index: String!
