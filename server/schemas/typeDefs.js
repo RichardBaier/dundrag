@@ -30,18 +30,10 @@ const typeDefs = gql`
     item_description: String!
   }
 
-  type Item {
-    _id: ID!
-    item_name: String!
-    item_description: String!
-  }
-
   type Skill {
-    _id: ID!
-    skill_name: String!
-    skill_description: String!
-    ability_name: [abilitySchema]
-    ability_modifier: [abilitySchema]
+    index: String!
+    name: String!
+    desc: [String!]!
   }
 
   type Spell {
@@ -110,10 +102,72 @@ const typeDefs = gql`
   type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    
+  }
+
+  type Cost {
+    quantity: Int!
+    unit: Currency!
+  }
+
+  type Class {
+    name: String!
+    hit_die: Int!
+    class_levels: [Level!]!
+  }
+
+  type Level {
+    level: Int!
+    class: Class!
+    prof_bonus: Int
+  }
+
+  type DamageAtLevel {
+    level: Int!
+    damage: String!
+  }
+  
+  type SpellDamage {
+    damage_at_slot_level: [DamageAtLevel!]
+    damage_at_character_level: [DamageAtLevel!]
+    damage_type: DamageType
+  }
+
+  type Damage {
+    damage_dice: String!
+    damage_type: DamageType!
+  }
+
+  type DamageType {
+    index: String!
+    name: String!
+    desc: [String!]!
+  }
+  
+
+  type PackQuantity {
+    quantity: Int!
+  }
+
+  type ArmorClass {
+    base: Int!
+    dex_bonus: Boolean!
+    max_bonus: Int
+  }
+
+  enum Currency {
+    CP
+    SP
+    GP
+  }
+
+  enum WeaponRange {
+    MELEE
+    RANGED
   }
 
 `;
+
+module.exports = typeDefs;
 
 // input characterInput {
 //   character_name: [String]
@@ -128,5 +182,3 @@ const typeDefs = gql`
 //   spells: [String]
 // }
 // addCharacter(input: characterInput!): Profile
-
-module.exports = typeDefs;
