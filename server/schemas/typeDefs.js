@@ -30,18 +30,10 @@ const typeDefs = gql`
     item_description: String!
   }
 
-  type Item {
-    _id: ID!
-    item_name: String!
-    item_description: String!
-  }
-
   type Skill {
-    _id: ID!
-    skill_name: String!
-    skill_description: String!
-    ability_name: String!
-    ability_modifier: Int!
+    index: String!
+    name: String!
+    desc: [String!]!
   }
 
   type Spell {
@@ -175,6 +167,8 @@ const typeDefs = gql`
 
 `;
 
+module.exports = typeDefs;
+
 // input characterInput {
 //   character_name: [String]
 //   character_class: [String]
@@ -188,5 +182,3 @@ const typeDefs = gql`
 //   spells: [String]
 // }
 // addCharacter(input: characterInput!): Profile
-
-module.exports = typeDefs;
