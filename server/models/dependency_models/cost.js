@@ -12,4 +12,7 @@ const costSchema = new Schema({
   },
 });
 
-module.exports = model("Cost", costSchema);
+module.exports = costSchema;
+
+// this will export as a schema.
+// schemas are reusuable across other models. 

@@ -7,4 +7,4 @@ const packQuantitySchema = new Schema({
   },
 });
 
-module.exports = model("PackQuantity", packQuantitySchema);
+module.exports = packQuantitySchema;

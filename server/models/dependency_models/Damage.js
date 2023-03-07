@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const damageTypeSchema = require("./dependency_models/damageType");
+const DamageTypeSchema = require("./DamageType");
 
 const damageSchema = new Schema({
   damage_dice: {
@@ -7,9 +7,9 @@ const damageSchema = new Schema({
     required: true,
   },
   damage_type: {
-    type: damageTypeSchema,
+    type: DamageTypeSchema,
     required: true,
   },
 });
 
-module.exports = model("Damage", damageSchema);
+module.exports = damageSchema;

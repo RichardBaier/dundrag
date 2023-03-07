@@ -15,4 +15,4 @@ const armorClassSchema = new Schema({
       }
   });
   
-  module.exports = model("ArmorClass", armorClassSchema);
+  module.exports = armorClassSchema;

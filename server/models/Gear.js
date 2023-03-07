@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
-const costSchema = require("./dependency_models/cost");
+const costSchema = require("./dependency_models/Cost");
 
-const armorSchema = new Schema({
+const gearSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -16,4 +16,4 @@ const armorSchema = new Schema({
   }
 });
 
-module.exports = model("Armor", armorSchema);
+module.exports = model("Gear", gearSchema);

@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const costSchema = require("./dependency_models/cost");
+const costSchema = require("./dependency_models/Cost");
 const damageSchema = require("./dependency_models/damage");
 
 const weaponSchema = new Schema({
@@ -21,7 +21,7 @@ const weaponSchema = new Schema({
   },
   weapon_range: {
     type: String,
-    enum: [MELEE, RANGED],
+    enum: ["MELEE", "RANGED"],
     required: true,
   },
 });
