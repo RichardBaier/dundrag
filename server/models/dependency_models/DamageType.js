@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const skillSchema = new Schema({
+const damageTypeSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -11,4 +11,4 @@ const skillSchema = new Schema({
   },
 });
 
-module.exports = model("Skill", skillSchema);
+module.exports = model("DamageType", damageTypeSchema);

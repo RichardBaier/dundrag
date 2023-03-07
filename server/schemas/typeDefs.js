@@ -31,7 +31,6 @@ const typeDefs = gql`
   }
 
   type Skill {
-    index: String!
     name: String!
     desc: [String!]!
   }
@@ -47,6 +46,7 @@ const typeDefs = gql`
     name: String!
     range: String!
   }
+
   type Pack {
     name: String!
     desc: [String!]
@@ -78,7 +78,6 @@ const typeDefs = gql`
   }
   
     type Gear {
-    index: String!
     name: String!
     cost: Cost!
     desc: [String!]
@@ -138,7 +137,6 @@ const typeDefs = gql`
   }
 
   type DamageType {
-    index: String!
     name: String!
     desc: [String!]!
   }
