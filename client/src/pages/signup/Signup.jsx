@@ -27,15 +27,27 @@ const Signup = () => {
     event.preventDefault();
     console.log(formState);
 
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     try {
       const { data } = await addProfile({
-        variables: { ...formState },
+        variables: { ...SignupformState },
       });
 
       Auth.login(data.addProfile.token);
     } catch (e) {
       console.error(e.message);
     }
+
+    setFormState({
+      username: '',
+      email: '',
+      password: '',
+    });
   };
 
   return (

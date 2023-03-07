@@ -34,5 +34,5 @@ const spellSchema = new Schema({
   },
 });
 
-module.exports = model('Spell', spellSchema);
+module.exports =  spellSchema;
 
