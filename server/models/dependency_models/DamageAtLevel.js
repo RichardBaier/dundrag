@@ -11,4 +11,4 @@ const damageAtLevelSchema = new Schema({
   },
 });
 
-module.exports = model("DamageAtLevel", damageAtLevelSchema);
+module.exports = damageAtLevelSchema;

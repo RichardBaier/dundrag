@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const damageTypeSchema = new Schema({
+const DamageTypeSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -11,4 +11,4 @@ const damageTypeSchema = new Schema({
   },
 });
 
-module.exports = model("DamageType", damageTypeSchema);
+module.exports = DamageTypeSchema;

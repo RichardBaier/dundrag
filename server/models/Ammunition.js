@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const costSchema = require("./dependency_models/cost");
+const costSchema = require("./dependency_models/Cost");
 
 const ammunitionSchema = new Schema({
   name: {

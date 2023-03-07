@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
-const costSchema = require("./dependency_models/cost")
-const packQuantitySchema = require ("./dependency_models/packQuantity")
+const costSchema = require("./dependency_models/Cost")
+const packQuantitySchema = require ("./dependency_models/PackQuantity")
 
 const packSchema = new Schema({
   name: {

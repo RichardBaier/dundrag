@@ -19,7 +19,6 @@ const typeDefs = gql`
     origin_story: String!
     background: String!
     custom_items: [CustomItem]
-    items: [Item]
     skills: [Skill]
     spells: [Spell]
   }
