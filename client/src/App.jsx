@@ -46,7 +46,7 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-row justify-center align-center min-100-vh">
+        <div className="pages">
           <Routes>
             <Route 
               path="/" 
