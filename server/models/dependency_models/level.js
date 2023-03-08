@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const classSchema = require("./Class")
 
 const levelSchema = new Schema({
   level: {
@@ -16,4 +17,4 @@ const levelSchema = new Schema({
 
 // Class requires level. Level requires class. is this okay?
 
-module.exports = model("Level", levelSchema);
+module.exports = levelSchema;

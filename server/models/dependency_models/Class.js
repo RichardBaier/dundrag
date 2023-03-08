@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const costSchema = require("./dependency_models/cost");
+const LevelSchema = require('./Level');
 
 const classSchema = new Schema({
   name: {
@@ -11,11 +11,11 @@ const classSchema = new Schema({
     required: true,
   },
   class_level: {
-    type: [levelSchema],
+    type: [LevelSchema],
     required: true,
   },
 });
 
 // Class requires level. Level requires class. is this okay?
 
-module.exports = model("Class", classSchema);
+module.exports = classSchema;

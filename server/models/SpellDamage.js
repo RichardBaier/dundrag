@@ -17,4 +17,4 @@ const spellDamageSchema = new Schema({
   }
 });
 
-module.exports = model("SpellDamage", spellDamageSchema);
+module.exports = spellDamageSchema;
