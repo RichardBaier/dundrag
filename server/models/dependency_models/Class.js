@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema } = require("mongoose");
 const LevelSchema = require('./Level');
 
 const classSchema = new Schema({
