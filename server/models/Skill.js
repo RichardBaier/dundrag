@@ -11,4 +11,4 @@ const skillSchema = new Schema({
   },
 });
 
-module.exports = model("Skill", skillSchema);
+module.exports = skillSchema
