@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const classSchema = require("./dependency_models/Class");
 const levelSchema = require("./dependency_models/level");
+const spellSchema = require("./Spell");
+const skillSchema = require("./Skill");
 
 const characterSchema = new Schema({
   creator: {
@@ -39,9 +41,18 @@ const characterSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Equipment',
   },
-  skills: [Skill],
-  spells: [Spell],
+  skill: {
+    type: skillSchema,
+    required: true,
+  },
+  Spell: {
+    type: spellSchema,
+    required: true,
+  },
 });
+
+
+
 
 
 const Character = model("Character", characterSchema);
