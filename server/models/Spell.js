@@ -1,4 +1,5 @@
-const { Schema, model } = require("mongoose");
+const { Schema } = require("mongoose");
+const spellDamageSchema = require("./SpellDamage");
 
 const spellSchema = new Schema({
   name: {
@@ -12,8 +13,8 @@ const spellSchema = new Schema({
     }
   ],
   damage: {
-    type: Schema.Types.ObjectId,
-    ref: 'SpellDamage',
+    type: spellDamageSchema,
+    required: true,
   },
   desc: {
     type: [String],

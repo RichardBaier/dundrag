@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const classSchema = require("./dependency_models/Class");
+const levelSchema = require("./dependency_models/level");
 
 const characterSchema = new Schema({
   creator: {
@@ -15,17 +16,17 @@ const characterSchema = new Schema({
     required: true,
   },
   character_level: {
-    type: Number,
+    type: levelSchema,
     required: true,
   },
-  character_exp: {
-    type: Number,
-    required: true,
-  },
-  origin_story: {
-    type: String,
-    required: true,
-  },
+  // character_exp: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // origin_story: {
+  //   type: String,
+  //   required: true,
+  // },
   background: {
     type: String,
     required: true,
@@ -34,6 +35,10 @@ const characterSchema = new Schema({
   //   type: Schema.Types.ObjectId,
   //   ref: "CustomItem",
   // },
+  equipment: {
+    type: Schema.Types.ObjectId,
+    ref: 'Equipment',
+  },
   skills: [Skill],
   spells: [Spell],
 });
