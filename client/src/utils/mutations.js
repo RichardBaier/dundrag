@@ -17,8 +17,9 @@ export const ADD_PROFILE = gql`
     addProfile(username: $username, email: $email, password: $password) {
       token
       profile {
-        _id
         username
+        email
+        _id
       }
     }
   }
