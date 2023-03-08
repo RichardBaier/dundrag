@@ -8,6 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Bio, Items, Login, Profile, Skills, Spells } from './pages';
 import './App.css';
+import AuthUtil from './utils/auth';
 
 // const client = new ApolloClient({
 //   request: operation => {
@@ -27,7 +28,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = AuthUtil.getToken();
 
   return {
     headers: {

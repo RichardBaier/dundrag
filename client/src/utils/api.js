@@ -8,7 +8,7 @@
 // };
 
 export const createProfile = (userData) => {
-  return fetch('/api/users', {
+  return fetch('/api/profile', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -27,6 +27,6 @@ export const loginUser = (userData) => {
   });
 };
 
-export const dndFiveEApi = (query) => {
-  return fetch(`"https://www.dnd5eapi.co/api/${query}`);
-};
+// export const dndFiveEApi = (query) => {
+//   return fetch(`"https://www.dnd5eapi.co/api/${query}`);
+// };
