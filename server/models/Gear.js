@@ -13,7 +13,7 @@ const gearSchema = new Schema({
   desc: {
     type: [String],
     required: true,
-  }
+  },
 });
 
 module.exports = model("Gear", gearSchema);
