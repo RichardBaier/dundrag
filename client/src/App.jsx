@@ -23,7 +23,7 @@ import './App.css';
 // });
 
 const httpLink = createHttpLink({
-  url: '/graphql'
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -40,7 +40,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-});
+})
 
 const App = () => {
   return (
