@@ -15,6 +15,12 @@ const typeDefs = gql`
     character_class: String
   }
 
+  input UpdateCharacter {
+    _id: ID!
+    character_name: String
+    character_class: String
+  }
+
   
   type Auth {
     token: ID!
@@ -26,16 +32,17 @@ const typeDefs = gql`
     getFullProfile: Profile
     getCharacter(characterId: ID!): Character
     getCharacters: [Character]
-    character_by_creator(creator: String!): [Character]
   }
   
   type Mutation {
-  addProfile(username: String!, email: String!, password: String!): Auth
-  login(email: String!, password: String!): Auth
-  addCharacter( character_name: String!, character_class: String!): Character
-}
-`;
-
+    addProfile(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addCharacter( character_name: String!, character_class: String!): Character
+    updateCharacter(input: UpdateCharacter): Character
+    removeCharacter(characterId: ID!): Character
+  }
+  `;
+  
 module.exports = typeDefs;
 
 
@@ -54,6 +61,7 @@ module.exports = typeDefs;
 /**____________________________________________________________ */
 
 
+// character_by_creator(creator: String!): [Character]
 
 // type Cost {
   //   quantity: Int!
