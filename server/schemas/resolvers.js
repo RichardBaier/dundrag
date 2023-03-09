@@ -54,16 +54,15 @@ const resolvers = {
       );
       return character;
     },
-    // updateCharacter: async (parent, { input }) => {
-    //   const character = await Character.findOneAndUpdate({
-    //      _id: characterId,
-    //      character_name: characterName,
-    //      character_class: characterClass
-    //   },
-    //   { new: true }, 
-    //   );
-    //   return character;
-    // },
+    updateCharacter: async (parent, { characterId, characterName, characterClass }) => {
+      const character = await Character.findOneAndUpdate(
+        { _id: characterId },
+        { character_name: characterName, character_class: characterClass },
+        { new: true }
+      );
+      return character;
+    },
+    
     removeCharacter: async (parent, { characterId }) => {
       const character = await Character.findOneAndDelete({
         _id: characterId

@@ -38,7 +38,9 @@ const typeDefs = gql`
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addCharacter( character_name: String!, character_class: String!): Character
-    updateCharacter(input: UpdateCharacter): Character
+    updateCharacter(characterId: ID, characterName: String, characterClass: String): Character
+  
+
     removeCharacter(characterId: ID!): Character
   }
   `;
