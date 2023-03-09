@@ -5,10 +5,10 @@ const spellSchema = require("./Spell");
 const skillSchema = require("./Skill");
 
 const characterSchema = new Schema({
-  creator: {
-    type: String,
-    required: true,
-  },
+  // creator: {
+  //   type: String,
+  //   required: true,
+  // },
   character_name: {
     type: String,
     required: true,
@@ -45,7 +45,7 @@ const characterSchema = new Schema({
     type: skillSchema,
     required: true,
   },
-  Spell: {
+  spell: {
     type: spellSchema,
     required: true,
   },
