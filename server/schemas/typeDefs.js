@@ -15,7 +15,7 @@ const typeDefs = gql`
     character_class: String!
     character_level: Int!
     character_exp: Int!
-    background: String!
+    background: String
     custom_items: [CustomItem]
     skills: [Skill]
     spells: [Spell]
@@ -28,8 +28,42 @@ const typeDefs = gql`
     item_name: String!
     item_description: String!
   }
+
+  input CustomItemInput {
+    item_name: String!
+    item_description: String!
+  }
   
-  type Skill {
+  input SkillInput {
+    skill_name: String!
+    skill_modifier: Int!
+  }
+  
+  input SpellInput {
+    spell_name: String!
+    spell_description: String!
+  }
+  
+  input EquipmentInput {
+    equipment_name: String!
+    equipment_description: String!
+    equipment_weight: String!
+  }
+  
+  input characterInput {
+    _id: ID!
+    character_name: String!
+    character_class: String!
+    character_level: Int!
+    character_exp: Int!
+    background: String!
+    custom_items: [CustomItemInput]
+    skills: [SkillInput]
+    spells: [SpellInput]
+    equipment: [EquipmentInput]
+  }
+  
+    type Skill {
     name: String!
     desc: [String!]!
   }
@@ -99,9 +133,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    profiles: [Profile]
-    profile(username: String!): Profile
-    characters: [Character]
+    getProfile(username: String!): Profile
+    getFullProfile: Profile
+    getCharacter(character_id: ID!): Character
     character_by_creator(creator: String!): [Character]
     character(character_id: ID!): Character
   }
@@ -168,11 +202,43 @@ const typeDefs = gql`
   }
   
   type Mutation {
+    createCustomItem(characterId: ID!, input: CustomItemInput!): Character
+    updateCustomItem(characterId: ID!, itemId: ID!, input: CustomItemInput!): Character
+    deleteCustomItem(characterId: ID!, itemId: ID!): Character
+  
+    createSkill(characterId: ID!, input: SkillInput!): Character
+    updateSkill(characterId: ID!, skillId: ID!, input: SkillInput!): Character
+    deleteSkill(characterId: ID!, skillId: ID!): Character
+  
+    createSpell(characterId: ID!, input: SpellInput!): Character
+    updateSpell(characterId: ID!, spellId: ID!, input: SpellInput!): Character
+    deleteSpell(characterId: ID!, spellId: ID!): Character
+  
+    createEquipment(characterId: ID!, input: EquipmentInput!): Character
+    updateEquipment(characterId: ID!, equipmentId: ID!, input: EquipmentInput!): Character
+    deleteEquipment(characterId: ID!, equipmentId: ID!): Character
+    
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addCharacter(character_name: String!, character_class: String!, character_level: Int!, character_exp: Int!, background: String!, custom_items: [CustomItem], skills: [Skill], spells: [Spell], equipment: [Equipment]): Auth
+    addCharacter(Character: characterInput!): Auth
   }
   `;
   
   module.exports = typeDefs;
+
+
+  // CREATE
+  // UPDATE
+  // DELETE 
+  // FOR ALL INPUT TYPES:
+  // CUSTOMITEM
+  // SKILLS
+  //SPELLS
+  // EQUIPMENTS
+
+
+
+  
+
+
   
