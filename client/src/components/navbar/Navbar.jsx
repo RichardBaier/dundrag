@@ -8,7 +8,9 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="navContainer">
           <div className="navPic">
-            <img src={ProfPic} alt="Logo" />
+            <Link to="/profile">
+              <img src={ProfPic} alt="Logo" />
+            </Link>
           </div>
           <ul className="navMenu">
             <li className="navMenuItem">
@@ -31,4 +33,4 @@ const Navbar = () => {
   );
 };
 
-export { Navbar };
+export default Navbar;
