@@ -1,26 +1,36 @@
 import { Outlet, Link } from "react-router-dom";
-import ProfPic from '../../assets/images/baseProfilePic.png';
-import './navbar.css';
+import ProfPic from "../../assets/images/baseProfilePic.png";
+import "./navbar.css";
 
 const Navbar = () => {
   return (
     <>
-      <nav>
+      <nav className="navbar">
         <div className="navContainer">
-          <a href="/profile" className="navPic">
-            <img src={ProfPic} alt="Logo" />
-          </a> 
+          <div className="navPic">
+            <Link to="/profile">
+              <img src={ProfPic} alt="Logo" />
+            </Link>
+          </div>
           <ul className="navMenu">
-            <li><Link to="/bio">Bio</Link></li>
-            <li><Link to="/items">Items</Link></li>
-            <li><Link to="/skills">Skills</Link></li>
-            <li><Link to="/spells">Spells</Link></li>
+            <li className="navMenuItem">
+              <Link to="/bio">Bio</Link>
+            </li>
+            <li className="navMenuItem">
+              <Link to="/items">Items</Link>
+            </li>
+            <li className="navMenuItem">
+              <Link to="/skills">Skills</Link>
+            </li>
+            <li className="navMenuItem">
+              <Link to="/spells">Spells</Link>
+            </li>
           </ul>
         </div>
       </nav>
       <Outlet />
     </>
-  )
+  );
 };
 
-export { Navbar };
+export default Navbar;

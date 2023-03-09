@@ -1,12 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 nav {
-  width: 100vw;
-  height: 5rem;
-  display: grid;
-  place-items: left;
-  position: fixed;
-  top: 0;
-  left: 0px;
-  z-index: 9;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 
 .navContainer {
@@ -14,38 +14,50 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(86, 1, 1);
+  height: 100%;
+  width: 100vw;
 }
 
 .navPic {
   width: 2.5rem;
-  border-radius: 50%;
-  overflow: hidden;
+  height: 2.5rem;
   margin-left: 25px;
+  position: relative;
+}
+
+.navPic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 nav ul {
-  margin:0 25px;
   height: 100%;
-  width: 50%;
-  padding:0;
-  list-style:none; 
+  padding: 0;
+  list-style: none;
   display: flex;
+  margin: 0;
 }
 
 nav ul li {
-  width: 100%;
+  width: calc(100% / 4); /* divide the width by the number of li elements */
+  padding: 0 12.5px; /* increase the padding to add more space between links */
   transition: all 0.5s ease-in-out;
 }
 
-nav ul li a { 
-  width: 100%;
+nav ul li:last-child {
+  margin-right: 25px;
+}
+
+nav ul li a {
+  flex: 1; /* allow the a tags to take up the available space */
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  color:#fff;
-  text-decoration:none;
-  font-size:1.3rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.0rem;
   transition: all 0.5s ease-in-out;
 }
 
@@ -53,7 +65,7 @@ nav ul li a:hover {
   color: black;
 }
 
-nav ul li:hover { 
-  background-color:red;
+nav ul li:hover {
+  background-color: red;
   cursor: pointer;
-} 
+}

@@ -6,8 +6,9 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { Bio, Items, Login, Profile, Skills, Spells } from './pages';
+import { Bio, Items, Login, Profile, Skills, Spells, CreateChar } from './pages';
 import './App.css';
+import AuthUtil from './utils/auth';
 
 // const client = new ApolloClient({
 //   request: operation => {
@@ -23,11 +24,11 @@ import './App.css';
 // });
 
 const httpLink = createHttpLink({
-  url: '/graphql'
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = AuthUtil.getToken();
 
   return {
     headers: {
@@ -40,7 +41,7 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-});
+})
 
 const App = () => {
   return (
@@ -51,6 +52,10 @@ const App = () => {
             <Route 
               path="/" 
               element={<Login />}
+            />
+            <Route 
+              path="/createChar" 
+              element={<CreateChar />}
             />
             <Route 
               path="/profile" 

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../../utils/mutations';
+import { useMutation } from '@apollo/react-hooks';
 
 import Auth from '../../utils/auth';
 
@@ -25,7 +25,7 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    // console.log(formState);
 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -35,7 +35,7 @@ const Signup = () => {
 
     try {
       const { data } = await addProfile({
-        variables: { ...SignupformState },
+        variables: { ...formState },
       });
 
       Auth.login(data.addProfile.token);
@@ -64,24 +64,27 @@ const Signup = () => {
               placeholder="Your username"
               name="username"
               type="text"
-              value={formState.name}
               onChange={handleChange}
+              value={formState.username} 
+              required={formState.username}
             />
             <input
               className="form-input"
               placeholder="Your email"
               name="email"
               type="email"
-              value={formState.email}
               onChange={handleChange}
+              value={formState.email} 
+              required={formState.email}
             />
             <input
               className="form-input"
               placeholder="******"
               name="password"
               type="password"
-              value={formState.password}
               onChange={handleChange}
+              value={formState.password}
+              required={formState.password}
             />
             <button
               className="btn"
