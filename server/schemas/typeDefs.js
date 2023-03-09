@@ -11,17 +11,15 @@ const typeDefs = gql`
 
   type Character {
     _id: ID!
-    creator: String!
     character_name: String!
     character_class: String!
     character_level: Int!
     character_exp: Int!
-    origin_story: String!
     background: String!
     custom_items: [CustomItem]
     skills: [Skill]
     spells: [Spell]
-    equipment: [Equipment]!
+    equipment: [Equipment]
   }
 
   
@@ -172,6 +170,7 @@ const typeDefs = gql`
   type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addCharacter(character_name: String!, character_class: String!, character_level: Int!, character_exp: Int!, background: String!, custom_items: [CustomItem], skills: [Skill], spells: [Spell], equipment: [Equipment]): Auth
   }
   `;
   
