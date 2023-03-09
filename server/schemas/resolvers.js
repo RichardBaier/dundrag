@@ -50,7 +50,7 @@ const resolvers = {
         // skill,
         // spell,
       },
-      { new: true } 
+      // { new: true } 
       );
       return character;
     },
