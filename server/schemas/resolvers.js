@@ -4,8 +4,8 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    getProfile: async (parent, { username }, { models }) => {
-      return models.Profile.findOne({ username }, { password: 0 });
+    getProfile: async (parent, { username }) => {
+      return Profile.findOne({ username }, { password: 0 });
     },
     getFullProfile: async (parent, args, context) => {
       return Profile.findOne({ _id: context.profile._id }).populate("characters");
