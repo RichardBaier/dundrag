@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(86, 1, 1);
+  height: 100%;
+  width: 100vw;
+}
+
+.navPic {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 25px;
+  position: relative;
+}
+
+.navPic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+nav ul {
+  height: 100%;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
+
+nav ul li {
+  width: calc(100% / 4); /* divide the width by the number of li elements */
+  padding: 0 12.5px; /* increase the padding to add more space between links */
+  transition: all 0.5s ease-in-out;
+}
+
+nav ul li:last-child {
+  margin-right: 25px;
+}
+
+nav ul li a {
+  flex: 1; /* allow the a tags to take up the available space */
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.0rem;
+  transition: all 0.5s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: black;
+}
+
+nav ul li:hover {
+  background-color: red;
+  cursor: pointer;
+}

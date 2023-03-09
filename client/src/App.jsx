@@ -1,34 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { Bio, Items, Login, Profile, Skills, Spells, CreateChar } from './pages';
+import './App.css';
+import AuthUtil from './utils/auth';
 
-function App() {
-  const [count, setCount] = useState(0)
+// const client = new ApolloClient({
+//   request: operation => {
+//     const token = localStorage.getItem('id_token');
 
+//     operation.setContext({
+//       headers: {
+//         authorization: token ? `Bearer ${token}` : ''
+//       }
+//     })
+//   },
+//   uri: '/graphql'
+// });
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = AuthUtil.getToken();
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  }
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+})
+
+const App = () => {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="pages">
+          <Routes>
+            <Route 
+              path="/" 
+              element={<Login />}
+            />
+            <Route 
+              path="/createChar" 
+              element={<CreateChar />}
+            />
+            <Route 
+              path="/profile" 
+              element={<Profile />}
+            />
+            <Route 
+              path="/bio" 
+              element={<Bio />}
+            />
+            <Route 
+              path="/items" 
+              element={<Items />}
+            />
+            <Route 
+              path="/Skills" 
+              element={<Skills />}
+            />
+            <Route 
+              path="/spells"
+              element={<Spells />}
+            />
+          </Routes>
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
-export default App
+export default App;
