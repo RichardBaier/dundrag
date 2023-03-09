@@ -6,7 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { Bio, Items, Login, Profile, Skills, Spells } from './pages';
+import { Bio, Items, Login, Profile, Skills, Spells, CreateChar } from './pages';
 import './App.css';
 import AuthUtil from './utils/auth';
 
@@ -52,6 +52,10 @@ const App = () => {
             <Route 
               path="/" 
               element={<Login />}
+            />
+            <Route 
+              path="/createChar" 
+              element={<CreateChar />}
             />
             <Route 
               path="/profile" 
