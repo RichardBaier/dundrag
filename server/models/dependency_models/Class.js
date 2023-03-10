@@ -4,15 +4,15 @@ const LevelSchema = require('./Level');
 const classSchema = new Schema({
   name: {
     type: String,
-    required: false,
+    required: true,
   },
   hit_die: {
     type: Number,
-    required: false,
+    required: true,
   },
   class_level: {
     type: [LevelSchema],
-    required: false,
+    required: true,
   },
 });
 

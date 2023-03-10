@@ -1,59 +1,59 @@
 const { Schema, model } = require("mongoose");
-// const classSchema = require("./dependency_models/Class");
-// const levelSchema = require("./dependency_models/level");
-// const spellSchema = require("./Spell");
-// const skillSchema = require("./Skill");
+const classSchema = require("./dependency_models/Class");
+const levelSchema = require("./dependency_models/level");
+const spellSchema = require("./Spell");
+const skillSchema = require("./Skill");
 
 const characterSchema = new Schema({
-  // creator: {
-  //   type: String,
-  //   required: false,
-  // },
+  creator: {
+    type: String,
+    required: true,
+  },
   character_name: {
     type: String,
-    required: false,
+    required: true,
   },
   character_class: {
-    type: String,
-    required: false,
-  }
-  // character_class: {
-  //   type: classSchema,
-  //   required: false,
-  // },
-  // character_level: {
-  //   type: levelSchema,
-  //   required: false,
-  // },
+    type: classSchema,
+    required: true,
+  },
+  character_level: {
+    type: levelSchema,
+    required: true,
+  },
   // character_exp: {
   //   type: Number,
-  //   required: false,
+  //   required: true,
   // },
   // origin_story: {
   //   type: String,
-  //   required: false,
+  //   required: true,
   // },
-  // background: {
-  //   type: String,
-  //   required: false,
-  // },
+  background: {
+    type: String,
+    required: true,
+  },
   // custom_items: {
   //   type: Schema.Types.ObjectId,
   //   ref: "CustomItem",
   // },
-  // equipment: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Equipment',
-  // },
-  // skill: {
-  //   type: skillSchema,
-  //   required: false,
-  // },
-  // spell: {
-  //   type: spellSchema,
-  //   required: false,
-  // },
+  equipment: {
+    type: Schema.Types.ObjectId,
+    ref: 'Equipment',
+  },
+  skill: {
+    type: skillSchema,
+    required: true,
+  },
+  Spell: {
+    type: spellSchema,
+    required: true,
+  },
 });
+
+
+
+
 
 const Character = model("Character", characterSchema);
 
