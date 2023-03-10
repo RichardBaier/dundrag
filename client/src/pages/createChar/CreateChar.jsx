@@ -2,11 +2,7 @@ import React from 'react'
 import { Navbar } from '../../components'
 import "./createChar.css"
 
-<<<<<<< HEAD
 
-
-
-=======
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
 
 function apiCallClass() {
@@ -43,7 +39,6 @@ apiCallClass();
 //   }
 //   console.log(characterClasses);
 // });
->>>>>>> 1d2f50730578be769353649716f2b0500ea9fbd1
 
 const CreateChar = () => {
 
