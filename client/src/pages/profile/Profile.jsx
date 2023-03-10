@@ -1,8 +1,7 @@
 import React from 'react'
 import { Navbar, CreatedChar } from '../../components'
 import './profile.css'
-import { Link } from "react-router-dom";
-import Auth from '../../utils/auth'
+import { Outlet, Link } from "react-router-dom";
 
 const Profile = () => {
   return (

@@ -2,6 +2,10 @@ import React from 'react'
 import { Navbar } from '../../components'
 import "./createChar.css"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85c05a0d92902255233742bf960ebb2be2a51f31
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
 
 function apiCallClass() {
