@@ -59,7 +59,11 @@ const resolvers = {
     removeCharacter: async (parent, { characterId }) => {
       const character = await Character.findOneAndDelete({
         _id: characterId
-
+      },
+      { new: true } 
+      );
+      return character;
+    }
   }
 };
 
