@@ -24,6 +24,7 @@ export const ADD_PROFILE = gql`
     }
   }
 `;
+
 export const ADD_CHARACTER = gql`
 mutation addCharacter($characterName: String!, $characterClass: String!) {
   addCharacter(character_name: $characterName, character_class: $characterClass) {

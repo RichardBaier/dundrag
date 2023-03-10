@@ -12,13 +12,8 @@ const resolvers = {
     },
     getCharacters: async (parent, args, context) => {
       return Character.find(args)
-    },
-    getCharacter: async (parent, { characterId }) => {
-      return Character.findOne({ _id: characterId });
-    },
-  },
-  Mutation: {
-    addProfile: async (parent, { username, email, password }) => {
+
+
       const profile = await Profile.create({ username, email, password });
       const token = signToken(profile);
       return { token, profile };
@@ -64,11 +59,7 @@ const resolvers = {
     removeCharacter: async (parent, { characterId }) => {
       const character = await Character.findOneAndDelete({
         _id: characterId
-      },
-      { new: true } 
-      );
-      return character;
-    }
+
   }
 };
 
