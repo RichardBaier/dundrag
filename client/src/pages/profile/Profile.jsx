@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar, CreatedChar } from '../../components'
 import './profile.css'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Auth from '../../utils/auth'
 
 const Profile = () => {
