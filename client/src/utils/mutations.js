@@ -22,26 +22,22 @@ export const ADD_PROFILE = gql`
         _id
       }
     }
-  }`
-
-
-  export const ADD_CHARACTER = gql`
-  mutation addCharacter($characterName: String!, $characterClass: String!) {
-    addCharacter(character_name: $characterName, character_class: $characterClass) {
-      _id
-      character_name
-      character_class
-    }
   }
 `;
-
-  export const REMOVE_CHARACTER = gql`
+export const ADD_CHARACTER = gql`
+mutation addCharacter($characterName: String!, $characterClass: String!) {
+  addCharacter(character_name: $characterName, character_class: $characterClass) {
+    _id
+    character_name
+    character_class
+  }
+}
+`;
+export const REMOVE_CHARACTER = gql`
   mutation RemoveCharacter($characterId: ID!) {
     removeCharacter(characterId: $characterId) {
       _id
       character_name
     }
   }`
-
 ;
-

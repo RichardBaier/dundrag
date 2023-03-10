@@ -7,9 +7,9 @@ const resolvers = {
     getProfile: async (parent, { username }) => {
       return Profile.findOne({ username }, { password: 0 });
     },
-    // getFullProfile: async (parent, args, context) => {
-    //   return Profile.findOne({ _id: context.profile._id }).populate("characters");
-    // },
+    getProfiles: async (parent, { args }) => {
+      return Profile.find(args)
+    },
     getCharacters: async (parent, args, context) => {
       return Character.find(args)
     },
@@ -49,8 +49,7 @@ const resolvers = {
         // equipment,
         // skill,
         // spell,
-      },
-      // { new: true } 
+      }, 
       );
       return character;
     },
@@ -62,7 +61,6 @@ const resolvers = {
       );
       return character;
     },
-    
     removeCharacter: async (parent, { characterId }) => {
       const character = await Character.findOneAndDelete({
         _id: characterId
@@ -71,8 +69,12 @@ const resolvers = {
       );
       return character;
     }
+  }
+};
 
-      // NEW ITEM INPUT MUTATIONS 
+module.exports = resolvers;
+
+  // NEW ITEM INPUT MUTATIONS 
       // async createCustomItem(_, { characterId, input }) {
       //   const character = await Character.findById(characterId);
       //   character.custom_items.push(input);
@@ -93,7 +95,7 @@ const resolvers = {
       //   await character.save();
       //   return character;
       // },
-      
+
       // async createSkill(_, { characterId, input }) {
       //   const character = await Character.findById(characterId);
       //   character.skills.push(input);
@@ -114,7 +116,7 @@ const resolvers = {
       //   await character.save();
       //   return character;
       // },
-      
+
       // async createSpell(_, { characterId, input }) {
       //   const character = await Character.findById(characterId);
       //   character.spells.push(input);
@@ -135,13 +137,8 @@ const resolvers = {
       //   await character.save();
       //   return character;
       // },
-    }
-  }
 
-module.exports = resolvers;
-
-
-// profiles: async () => {
+      // profiles: async () => {
 //   return Profile.find().populate("characters");
 // },
 
@@ -158,6 +155,3 @@ module.exports = resolvers;
 //     )
 //   }
 // }
-
-
-

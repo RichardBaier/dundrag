@@ -1,13 +1,13 @@
 [
-  {
-    "creator" : "biggusDickus",
-    "character_name": "Jeffrey",
-    "character_class": "Rogue"
+{
+  "creator" : "biggusDickus",
+  "character_name": "Jeffrey",
+  "character_class": "Rogue"
 
-  },
-  {
-    "creator": "jhoang",
-    "character_name": "Dickus",
-    "character_class": "Rogue"
-  }
+},
+{
+  "creator": "jhoang",
+  "character_name": "Dickus",
+  "character_class": "Rogue"
+}
 ]

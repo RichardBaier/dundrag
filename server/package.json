@@ -5,8 +5,6 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
-        "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
         "seed": "node seeds/seed.js",
         "watch": "nodemon server.js"
     },
@@ -15,6 +13,7 @@
     "dependencies": {
         "apollo-server-express": "^3.6.2",
         "bcrypt": "^5.0.0",
+        "bcryptjs": "^2.4.3",
         "dotenv": "^16.0.3",
         "express": "^4.17.2",
         "graphql": "^16.3.0",

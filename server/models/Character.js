@@ -7,35 +7,35 @@ const { Schema, model } = require("mongoose");
 const characterSchema = new Schema({
   // creator: {
   //   type: String,
-  //   required: false,
+  //   required: true,
   // },
   character_name: {
     type: String,
-    required: false,
+    required: true,
   },
   character_class: {
     type: String,
-    required: false,
+    required: true,
   }
   // character_class: {
   //   type: classSchema,
-  //   required: false,
+  //   required: true,
   // },
   // character_level: {
   //   type: levelSchema,
-  //   required: false,
+  //   required: true,
   // },
   // character_exp: {
   //   type: Number,
-  //   required: false,
+  //   required: true,
   // },
   // origin_story: {
   //   type: String,
-  //   required: false,
+  //   required: true,
   // },
   // background: {
   //   type: String,
-  //   required: false,
+  //   required: true,
   // },
   // custom_items: {
   //   type: Schema.Types.ObjectId,
@@ -47,13 +47,17 @@ const characterSchema = new Schema({
   // },
   // skill: {
   //   type: skillSchema,
-  //   required: false,
+  //   required: true,
   // },
-  // spell: {
+  // Spell: {
   //   type: spellSchema,
-  //   required: false,
+  //   required: true,
   // },
 });
+
+
+
+
 
 const Character = model("Character", characterSchema);
 
