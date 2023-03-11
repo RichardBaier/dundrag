@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import ProfPic from "../../assets/images/baseProfilePic.png";
 import "./navbar.css";
 
+import Auth from '../../utils/auth'
+
 const Navbar = () => {
   return (
     <>
@@ -24,6 +26,9 @@ const Navbar = () => {
             </li>
             <li className="navMenuItem">
               <Link to="/spells">Spells</Link>
+            </li>
+            <li>
+              <Link onClick={Auth.logout}>Logout</Link>
             </li>
           </ul>
         </div>
