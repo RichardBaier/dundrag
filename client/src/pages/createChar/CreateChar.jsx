@@ -2,12 +2,29 @@ import { Navbar } from "../../components";
 import "./createChar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { ADD_CHARACTER } from "../../utils/mutations";
+import { useMutation } from "@apollo/react-hooks";
+import Auth from "../../utils/auth";
 
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
 let characterClassArray = [];
 
 function CreateChar() {
-  const [characterClass, setCharacterClass] = useState(null);
+  const [characterFormData, setCharacterFormData] = useState({
+    characterName: "",
+    characterClass: "",
+  });
+  const [addChar, { error }] = useMutation(ADD_CHARACTER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setCharacterFormData({
+      ...characterFormData,
+      [name]: value,
+    });
+  };
 
   useEffect(() => {
     axios
@@ -21,49 +38,89 @@ function CreateChar() {
       `,
       })
       .then((result) => {
-        console.log(
-          "result.data.data.classes.length ~>",
-          result.data.data.classes.length
-        );
-
         for (let i = 0; i < result.data.data.classes.length; i++) {
           let className = result.data.data.classes[i].name;
-          console.log("className ~>", className);
+
           characterClassArray.push(className);
         }
-        setCharacterClass(characterClassArray);
-
-        console.log("this is what i want! ~>", characterClassArray);
+        setCharacterFormData(characterClassArray);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
 
-  if (!characterClass) {
+  if (!characterFormData) {
     return <p>Loading...</p>;
   }
+  const handleCharacterSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!characterFormData) {
+      return false;
+    }
+    try {
+      const { data } = await addChar({
+        variables: { ...characterFormData },
+      });
+      setCharacterFormData({
+        characterName: data.characterName,
+        characterClass: data.characterClass,
+      });
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
-      <form>
+      <Navbar />
+      {Auth.loggedIn() ? (
         <div>
-          <label for="characterName">Choose a username: </label>
-          <input type="text" id="characterName" name="characterName" placeholder="Character Name" />
+          <p>{error && <span>{error.message}</span>}</p>
+          <form onSubmit={handleCharacterSubmit}>
+            <div>
+              <label htmlFor="characterName">Choose a username: </label>
+              <input
+                type="text"
+                id="characterName"
+                name="characterName"
+                value={characterFormData.characterName}
+                onChange={handleChange}
+                placeholder="Character Name"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="characterClassSelection"
+                id="characterClassSelection"
+              ></label>
+              <select
+                id="characterClassSelection"
+                name="characterClass"
+                value={characterFormData.characterClass}
+                onChange={handleChange}
+              >
+                {characterClassArray.map((className, index) => (
+                  <option value={className} key={index}>
+                    {JSON.stringify(className)}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button type="submit">
+              {/* <Link to={"/profile"}>Submit</Link> */}
+              submit
+            </button>
+          </form>
         </div>
-        <div>
-          <label
-            for="characterClassSelection"
-            id="characterClassSelection"
-          ></label>
-          <select>
-            {characterClass.map((className, index) => (
-              <option key={index}>{className} </option>
-            ))}
-          </select>
-        </div>
-        <button>Submit</button>
-      </form>
+      ) : (
+        <p>
+          You need to be logged in to share your thoughts. Please{" "}
+          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+        </p>
+      )}
     </div>
   );
 }
