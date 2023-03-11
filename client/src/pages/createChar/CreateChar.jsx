@@ -1,31 +1,43 @@
 import { Navbar } from "../../components";
 import "./createChar.css";
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
+let characterClassArray = [];
 
 function CreateChar() {
   const [characterClass, setCharacterClass] = useState(null);
 
   useEffect(() => {
-    axios.post(dnd5eapiLink, {
-      query: `
+    axios
+      .post(dnd5eapiLink, {
+        query: `
       query Query {
         classes {
           name
-          class_levels {
-            level
-          }
         }
       }
-      `
-    }).then(result => {
-      setCharacterClass(result.data.data.classes[0]);
-      console.log(result)
-    }).catch(error => {
-      console.error(error);
-    });
+      `,
+      })
+      .then((result) => {
+        console.log(
+          "result.data.data.classes.length ~>",
+          result.data.data.classes.length
+        );
+
+        for (let i = 0; i < result.data.data.classes.length; i++) {
+          let className = result.data.data.classes[i].name;
+          console.log("className ~>", className);
+          characterClassArray.push(className);
+        }
+        setCharacterClass(characterClassArray);
+
+        console.log("this is what i want! ~>", characterClassArray);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   if (!characterClass) {
@@ -34,22 +46,11 @@ function CreateChar() {
 
   return (
     <div>
-      <h2>{characterClass.name}</h2>
-      <p>characterClassName: {characterClass.class_levels[0].level}</p>
+      {characterClass.map((className, index) => (
+        <h2 key={index}>{className} </h2>
+      ))}
     </div>
   );
 }
 
-// data.data.classes[0].class_levels[0].level
-
-
 export default CreateChar;
-
-// {/* <label for="characterClassesList">Choose a class:</label>
-
-// <select name="classes" id="classes">
-//   <option value="volvo">Volvo</option>
-//   <option value="saab">Saab</option>
-//   <option value="mercedes">Mercedes</option>
-//   <option value="audi">Audi</option>
-// </select> */}
