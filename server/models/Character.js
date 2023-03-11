@@ -1,15 +1,19 @@
 const { Schema, model } = require("mongoose");
-const classSchema = require("./dependency_models/Class");
-const levelSchema = require("./dependency_models/level");
-const spellSchema = require("./Spell");
-const skillSchema = require("./Skill");
+// const classSchema = require("./dependency_models/Class");
+// const levelSchema = require("./dependency_models/level");
+// const spellSchema = require("./Spell");
+// const skillSchema = require("./Skill");
 
 const characterSchema = new Schema({
   // creator: {
   //   type: String,
   //   required: true,
   // },
-
+  character_name: {
+    type: String,
+    required: true,
+  },
+  character_class: {
     type: String,
     required: true,
   }

@@ -11,12 +11,17 @@ const resolvers = {
       return Profile.find(args)
     },
     getCharacters: async (parent, args, context) => {
-      return Character.find(args)
-
-
-      const profile = await Profile.create({ username, email, password });
-      const token = signToken(profile);
-      return { token, profile };
+      return Character.find(args) 
+    },
+    getCharacter: async (parent, { characterId }) => {
+        return Character.findOne({ _id: characterId });
+      },
+    },
+    Mutation: {
+      addProfile: async (parent, { username, email, password }) => {
+        const profile = await Profile.create({ username, email, password });
+        const token = signToken(profile);
+        return { token, profile };
     },
     login: async (parent, { email, password }) => {
       const profile = await Profile.findOne({ email });
