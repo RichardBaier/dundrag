@@ -45,26 +45,27 @@ function CreateChar() {
   }
 
   return (
-    
     <div>
-      <label for="characterClassSelection" id="characterClassSelection"></label>
-      <select>
-      {characterClass.map((className, index) => (
-        <option key={index}>{className} </option>
-      ))}
-      </select>
+      <form>
+        <div>
+          <label for="characterName">Choose a username: </label>
+          <input type="text" id="characterName" name="characterName" placeholder="Character Name" />
+        </div>
+        <div>
+          <label
+            for="characterClassSelection"
+            id="characterClassSelection"
+          ></label>
+          <select>
+            {characterClass.map((className, index) => (
+              <option key={index}>{className} </option>
+            ))}
+          </select>
+        </div>
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
 
 export default CreateChar;
-
-
-{/* <label for="cars">Choose a car:</label>
-
-<select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> */}
