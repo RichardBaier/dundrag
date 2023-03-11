@@ -3,21 +3,27 @@ const { gql } = require('apollo-server-express')
 const typeDefs = gql`
   type Profile {
     _id: ID!
-
     username: String
     email: String
     password: String
     token: ID
     characters: [Character]!
-
-
+  }
+  type Character {
     _id: ID
     character_name: String!
     character_class: String!
   }
   input UpdateCharacter {
-
+    _id: ID!
+    character_name: String
+    character_class: String
+  }
   
+  type Auth {
+    token: ID!
+    profile: Profile
+  }
 
   type Query {
     getProfile(username: String!): Profile
@@ -34,8 +40,8 @@ const typeDefs = gql`
     addCharacter( character_name: String!, character_class: String!): Character
     updateCharacter(characterId: ID, characterName: String, characterClass: String): Character
     removeCharacter(characterId: ID!): Character
-
-`
+  }
+`;
 
 module.exports = typeDefs;
 
