@@ -29,4 +29,3 @@ apiCallClass().then((characterClass) => {
     container.appendChild(newH2);
   }
 });
-

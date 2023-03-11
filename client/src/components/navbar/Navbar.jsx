@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ProfPic from "../../assets/images/baseProfilePic.png";
 import "./navbar.css";
 
@@ -28,7 +28,6 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-      <Outlet />
     </>
   );
 };
