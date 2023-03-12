@@ -1,11 +1,21 @@
 import React from 'react'
 import { Navbar } from '../../components'
+import './skills.css'
 
 const Skills = () => {
   return (
-    <div>
-    <Navbar />
-    <div>Skills</div>
+    <div className='skills'>
+      <Navbar />
+      <div>
+        <h1>
+          Skills
+        </h1>
+      </div>
+      <div>
+        <h3>
+          Currently under development...
+        </h3>
+      </div>
     </div>
   )
 }

@@ -1,11 +1,21 @@
 import React from 'react'
 import { Navbar } from '../../components'
+import './items.css'
 
 const Items = () => {
   return (
-    <div>
-    <Navbar />
-    <div>Items</div>
+    <div className='items-container'>
+      <Navbar />
+      <div>
+        <h1>
+        Items
+        </h1>
+      </div>
+      <div>
+        <h3>
+          Currently under development...
+        </h3>
+      </div>
     </div>
   )
 }

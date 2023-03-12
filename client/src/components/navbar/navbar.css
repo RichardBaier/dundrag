@@ -4,9 +4,13 @@
 }
 
 nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
   width: 100%;
-  height: 100%;
-  z-index: 10;
+  height: 3rem;
+  z-index: 3;
 }
 
 .navContainer {
@@ -50,15 +54,16 @@ nav ul li:last-child {
 }
 
 nav ul li a {
-  flex: 1; /* allow the a tags to take up the available space */
-  height: 100%;
+  /*  allow the a tags to take up the available space */
+  /* flex: 1;  */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
-  text-decoration: none;
+  height: 100%;
   font-size: 1.0rem;
   transition: all 0.5s ease-in-out;
+  text-decoration: none;
+  color: #fff;
 }
 
 nav ul li a:hover {

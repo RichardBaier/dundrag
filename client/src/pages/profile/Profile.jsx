@@ -18,7 +18,7 @@ const Profile = () => {
           </button>
         </Link>
       </div>
-      <div className="character-list">
+      <div>
         <CreatedChar />
       </div>
     </div>

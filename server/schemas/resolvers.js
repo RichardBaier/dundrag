@@ -46,12 +46,12 @@ const resolvers = {
 
       return { token, profile };
     },
-    addCharacter: async (parent, { character_name, character_class }, context) => {
+    addCharacter: async (parent, { character_name, character_class }) => {
 
-      const profile = await Profile.findOne(context.profile._id)
+      // const profile = await Profile.findOne(context.profile._id)
 
       const character = Character.create({
-        creator: profile,
+        // creator: profile,
         character_name,
         character_class,
         // character_level,
@@ -60,7 +60,6 @@ const resolvers = {
         // skill,
         // spell,
       }, 
-      { new: true },
       );
       return character;
     },
