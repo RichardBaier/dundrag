@@ -9,3 +9,13 @@ export const QUERY_PROFILE = gql`
     }
   }
 `;
+
+export const QUERY_CHARACTER = gql`
+  query getCharacter($_id: ID!) {
+    character(_id: $_id) {
+      _id
+      characterName
+      characterClass
+    }
+  }
+`;
