@@ -39,3 +39,10 @@
     background: red;
     color: white;
 }
+
+.character-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%
+}
