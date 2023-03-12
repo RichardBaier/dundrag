@@ -57,6 +57,12 @@ const CreateChar = () => {
   const handleCharacterSubmit = async (event) => {
     event.preventDefault();
 
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
     if (!characterFormData) {
       return false;
     }
