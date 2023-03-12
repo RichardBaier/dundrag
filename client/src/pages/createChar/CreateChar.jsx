@@ -10,7 +10,7 @@ import Auth from "../../utils/auth";
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
 let characterClassArray = [];
 
-function CreateChar() {
+const CreateChar = () => {
   const [characterFormData, setCharacterFormData] = useState({
     characterName: "",
     characterClass: "",
@@ -102,9 +102,10 @@ function CreateChar() {
                 value={characterFormData.characterClass}
                 onChange={handleChange}
               >
+                <option value="" disabled selected>Class Type</option>
                 {characterClassArray.map((className, index) => (
                   <option value={className} key={index}>
-                    {JSON.stringify(className)}
+                    {JSON.stringify(className).replace(/"/g,"")}
                   </option>
                 ))}
               </select>
