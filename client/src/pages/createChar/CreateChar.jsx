@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { ADD_CHARACTER } from "../../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../../utils/auth";
+import { Token } from "graphql";
 
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
 let characterClassArray = [];
@@ -61,7 +62,7 @@ const CreateChar = () => {
     }
     try {
       const { data } = await addChar({
-        variables: { ...characterFormData },
+        variables: { ...characterFormData, creatorToken: Token},
       });
       setCharacterFormData({
         characterName: data.characterName,
@@ -86,7 +87,7 @@ const CreateChar = () => {
                 type="text"
                 id="characterName"
                 name="characterName"
-                value={characterFormData.characterName}
+                value={characterFormData.value}
                 onChange={handleChange}
                 placeholder="Character Name"
               />
@@ -99,10 +100,10 @@ const CreateChar = () => {
               <select
                 id="characterClassSelection"
                 name="characterClass"
-                value={characterFormData.characterClass}
+                value={characterFormData.value}
                 onChange={handleChange}
               >
-                <option value="" disabled selected>Class Type</option>
+                <option value="">Class Type</option>
                 {characterClassArray.map((className, index) => (
                   <option value={className} key={index}>
                     {JSON.stringify(className).replace(/"/g,"")}
