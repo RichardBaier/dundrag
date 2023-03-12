@@ -5,10 +5,10 @@ const { Schema, model } = require("mongoose");
 // const skillSchema = require("./Skill");
 
 const characterSchema = new Schema({
-  // creator: {
-  //   type: String,
-  //   required: true,
-  // },
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+  },
   character_name: {
     type: String,
     required: true,

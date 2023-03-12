@@ -6,11 +6,12 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    token: ID
-    characters: [Character]!
+    token: Auth
+    characters: [Character]
   }
   type Character {
     _id: ID
+    creator: Profile
     character_name: String!
     character_class: String!
   }

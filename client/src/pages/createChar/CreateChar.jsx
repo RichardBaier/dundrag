@@ -56,6 +56,12 @@ const CreateChar = () => {
   const handleCharacterSubmit = async (event) => {
     event.preventDefault();
 
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
     if (!characterFormData) {
       return false;
     }
@@ -86,7 +92,7 @@ const CreateChar = () => {
                 type="text"
                 id="characterName"
                 name="characterName"
-                value={characterFormData.characterName}
+                value={characterFormData.value}
                 onChange={handleChange}
                 placeholder="Character Name"
               />
@@ -99,10 +105,10 @@ const CreateChar = () => {
               <select
                 id="characterClassSelection"
                 name="characterClass"
-                value={characterFormData.characterClass}
+                value={characterFormData.value}
                 onChange={handleChange}
               >
-                <option value="" disabled selected>Class Type</option>
+                <option value="">Class Type</option>
                 {characterClassArray.map((className, index) => (
                   <option value={className} key={index}>
                     {JSON.stringify(className).replace(/"/g,"")}
