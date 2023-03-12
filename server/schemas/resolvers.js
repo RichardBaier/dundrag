@@ -4,8 +4,14 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    getProfile: async (parent, { username }) => {
-      return Profile.findOne({ username }, { password: 0 });
+    getProfile: async (parent, args, context) => {
+      const profile = await Profile.findOne({ _id: context.profile_id })
+      .populate("characters")
+
+      if (!profile) {
+        throw new ApolloError(`Couldn't find user by this id!`)
+      }
+      return profile;
     },
     getProfiles: async (parent, { args }) => {
       return Profile.find(args)
