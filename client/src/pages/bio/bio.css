@@ -1,0 +1,10 @@
+.bio {
+  color: #fff;
+}
+
+.bio h1, h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20vh;
+}

@@ -19,3 +19,14 @@ export const QUERY_CHARACTER = gql`
     }
   }
 `;
+
+export const QUERY_CHARACTERS = gql`
+  query getCharacters {
+    getCharacters {
+      _id
+      character_name
+      character_class
+    }
+  }
+`;
+

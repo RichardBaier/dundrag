@@ -47,7 +47,11 @@ const resolvers = {
       return { token, profile };
     },
     addCharacter: async (parent, { character_name, character_class }) => {
+
+      // const profile = await Profile.findOne(context.profile._id)
+
       const character = Character.create({
+        // creator: profile,
         character_name,
         character_class,
         // character_level,

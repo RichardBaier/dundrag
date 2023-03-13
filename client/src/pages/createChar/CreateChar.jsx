@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { ADD_CHARACTER } from "../../utils/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../../utils/auth";
+import { Token } from "graphql";
 
 const dnd5eapiLink = "https://www.dnd5eapi.co/graphql";
 let characterClassArray = [];
@@ -67,7 +68,7 @@ const CreateChar = () => {
     }
     try {
       const { data } = await addChar({
-        variables: { ...characterFormData },
+        variables: { ...characterFormData, creatorToken: Token},
       });
       setCharacterFormData({
         characterName: data.characterName,
@@ -83,51 +84,45 @@ const CreateChar = () => {
     <div>
       <Navbar />
       {Auth.loggedIn() ? (
-        <div>
-          <p>{error && <span>{error.message}</span>}</p>
-          <form onSubmit={handleCharacterSubmit}>
-            <div>
-              <label htmlFor="characterName">Choose a username: </label>
+        <div className="create-char-container">  
+          <div className="create-char-card">
+            <p>{error && <span>{error.message}</span>}</p>
+            <form onSubmit={handleCharacterSubmit} className="create-char-form">
+              <h1>Create a Character:</h1>
               <input
                 type="text"
-                id="characterName"
+                className="char-input"
                 name="characterName"
                 value={characterFormData.value}
                 onChange={handleChange}
                 placeholder="Character Name"
               />
-            </div>
-            <div>
-              <label
-                htmlFor="characterClassSelection"
-                id="characterClassSelection"
-              ></label>
-              <select
-                id="characterClassSelection"
-                name="characterClass"
-                value={characterFormData.value}
-                onChange={handleChange}
-              >
-                <option value="">Class Type</option>
-                {characterClassArray.map((className, index) => (
-                  <option value={className} key={index}>
-                    {JSON.stringify(className).replace(/"/g,"")}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button type="submit">
-              {/* <Link to={"/profile"}>Submit</Link> */}
-              submit
-            </button>
-          </form>
+                <select
+                  className="char-input"
+                  name="characterClass"
+                  value={characterFormData.value}
+                  onChange={handleChange}
+                >
+                  <option value="">Class Type</option>
+                  {characterClassArray.map((className, index) => (
+                    <option value={className} key={index}>
+                      {JSON.stringify(className).replace(/"/g,"")}
+                    </option>
+                  ))}
+                </select>
+              <button type="submit" className="char-input" id="char-button">
+                Submit
+                {/* <Link to={"/profile"}>Submit</Link> */}
+              </button>
+            </form>
+          </div>
         </div>
-      ) : (
-        <p>
-          You need to be logged in to create a character. Please{" "}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
+        ) : (
+          <p>
+            You need to be logged in to create a character. Please{" "}
+            <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+          </p>
+        )}
     </div>
   );
 }
